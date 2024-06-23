@@ -1,0 +1,22 @@
+{
+  "name": "blackbojack",
+  "version": "1.0.0",
+  "description": "Telegram bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Fabul0n/BlackBoJack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fabul0n/BlackBoJack/issues"
+  },
+  "homepage": "https://github.com/Fabul0n/BlackBoJack#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
