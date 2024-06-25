@@ -1,5 +1,24 @@
 require('dotenv').config()
 const TelegramBot = require('node-telegram-bot-api');
+const view = require('./controller');
+const model = require('./model');
+
+session = model.makeSession();
+
+const commands = [
+  {
+    command: "start",
+    description: "Запуск бота"
+  },
+  {
+    command: "game",
+    description: "Начать игру"
+  },
+  {
+    command: "help",
+    description: "Раздел помощи"
+  }
+]
 
 const bot = new TelegramBot(process.env.API_KEY_BOT, {
   polling: {
@@ -8,11 +27,17 @@ const bot = new TelegramBot(process.env.API_KEY_BOT, {
   }
 });
 
+bot.setMyCommands(commands);
+
 bot.on("polling_error", err => console.log(err.data.error.message));
 
-/*bot.on('text', async msg => {
+bot.on('text', async msg => {
   await bot.sendMessage(msg.chat.id, msg.text);
-})*/
+});
+
+bot.onText(/^\/game$/, async msg => {
+  bot.sendMessage(msg.chat.id, 'Игра началась');
+});
 
 /*bot.on('text', async msg => {
 
@@ -44,7 +69,7 @@ bot.on("polling_error", err => console.log(err.data.error.message));
 
 })*/
 
-bot.onText(/\/start/, async msg => {
+/*bot.onText(/\/start/, async msg => {
 
   try {
 
@@ -90,4 +115,4 @@ const commands = [
 
 ]
 
-bot.setMyCommands(commands);
+bot.setMyCommands(commands);*/
